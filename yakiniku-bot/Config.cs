@@ -8,7 +8,11 @@ namespace yakinikubot {
     	public static string taoHouseURL;
 		public static string chigiHouseURL;
 
-        public Config() {
+		public Config() {
+
+		}
+		
+        public void Load() {
         	var path = System.Environment.CurrentDirectory;
         	path += filePath;
         	Console.WriteLine(path);
