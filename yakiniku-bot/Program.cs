@@ -4,19 +4,19 @@ namespace yakinikubot
 {
     class MainClass
     {
-        public static void Main(string[] args)
-        {
+        public static void Main(string[] args) {
 
-            try {
-            	var config = new Config();
-            	config.Load();
+            Console.WriteLine("Load config file");
+            new Config().Load();
 
-	            var slack = new SlackController(false);
-	            slack.Upload();
+            Console.WriteLine("Load image file");
+            var image = new ImageList();
+            image.Load();
+            var path = image.GetRandomFilePath();
+
+            var slack = new SlackController(true);
+            slack.Upload(path);
 	            
-        	} catch(Exception e) {
-
-        	}
         }
     }
 }

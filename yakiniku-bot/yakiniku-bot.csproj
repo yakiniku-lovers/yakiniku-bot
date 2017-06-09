@@ -39,6 +39,7 @@
     <Reference Include="SlackAPI">
       <HintPath>..\packages\SlackAPI.1.0.5.93\lib\net45\SlackAPI.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -46,6 +47,8 @@
     <Compile Include="SlackController.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="ImageList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
