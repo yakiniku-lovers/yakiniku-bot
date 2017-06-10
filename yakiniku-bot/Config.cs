@@ -7,6 +7,8 @@ namespace yakinikubot {
     	const string filePath = "/config";
     	public static string taoHouseURL;
 		public static string chigiHouseURL;
+        public static string clientId;
+        public static string clientSecret;
 
 		public Config() {
 
@@ -20,6 +22,8 @@ namespace yakinikubot {
         	using(var reader = new StreamReader(path)) {
         		taoHouseURL = reader.ReadLine();
         		chigiHouseURL = reader.ReadLine();
+                clientId = reader.ReadLine();
+                clientSecret = reader.ReadLine();
         		Console.WriteLine(taoHouseURL);
         		Console.WriteLine(chigiHouseURL);
         	}
