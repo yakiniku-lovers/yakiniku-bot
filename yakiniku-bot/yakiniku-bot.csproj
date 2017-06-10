@@ -51,6 +51,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="ImageList.cs" />
+    <Compile Include="TwitterController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
