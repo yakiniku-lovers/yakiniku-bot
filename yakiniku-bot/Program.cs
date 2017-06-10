@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Collections;
+
 
 namespace yakinikubot
 {
     class MainClass
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+			GetImages getImages = new GetImages();
+
+			ArrayList urls = getImages.Get();
+
+			foreach (string url in urls)
+			{
+				Console.WriteLine(url);
+			}
+
+            getImages.GetUrlsInFile();
         }
     }
 }
