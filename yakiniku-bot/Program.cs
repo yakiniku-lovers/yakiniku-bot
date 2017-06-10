@@ -1,4 +1,5 @@
-﻿﻿using System;
+﻿using System;
+using System.Collections;
 
 namespace yakinikubot
 {
@@ -8,7 +9,11 @@ namespace yakinikubot
 
             Console.WriteLine("Load config file");
             new Config().Load();
-
+  
+  
+            var imageLoader = new ImageLoader();
+            imageLoader.GetUrlsInFile();
+          
             Console.WriteLine("Load image file");
             var image = new ImageList();
             image.Load();
