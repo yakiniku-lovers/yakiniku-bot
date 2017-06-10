@@ -10,7 +10,7 @@ namespace yakinikubot
             Console.WriteLine("Load config file");
             new Config().Load();
   
-  
+            Console.WriteLine("Get image url from web");
             var imageLoader = new ImageLoader();
             imageLoader.GetUrlsInFile();
           

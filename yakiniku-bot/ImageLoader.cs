@@ -70,7 +70,7 @@ namespace yakinikubot
         public void GetUrlsInFile(){
             ArrayList urls = GetImageUrl();
 
-			using (var streamWriter = new StreamWriter("001.txt", false, System.Text.Encoding.GetEncoding("shift_jis"))){
+			using (var streamWriter = new StreamWriter("imagelist.txt", false, System.Text.Encoding.GetEncoding("shift_jis"))){
 				foreach (string imageurl in urls)
 				{
                     streamWriter.WriteLine(imageurl);
