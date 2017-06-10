@@ -9,7 +9,7 @@ namespace yakinikubot
 
             Console.WriteLine("Load config file");
             new Config().Load();
-  
+
             Console.WriteLine("Get image url from web");
             var imageLoader = new ImageLoader();
             imageLoader.GetUrlsInFile();
@@ -19,9 +19,18 @@ namespace yakinikubot
             image.Load();
             var path = image.GetRandomFilePath();
 
+            Console.WriteLine("Connect twitter");
+            var twitter = new TwitterController();
             var slack = new SlackController(true);
-            slack.Upload(path);
-	            
+            twitter.OnTweetReceived += (obj, e) => {
+                if(e.Tweet.Contains("焼肉")) {
+                    var text = e.ScreenName + "さんが「" + e.Tweet + "」と呟きました";
+                    Console.WriteLine(text);
+                    slack.Upload(text);
+                    slack.Upload(path);
+                }
+            };
+            twitter.Connect();
         }
     }
 }

@@ -7,8 +7,10 @@ namespace yakinikubot {
     	const string filePath = "/config";
     	public static string taoHouseURL;
 		public static string chigiHouseURL;
-        public static string clientId;
-        public static string clientSecret;
+        public static string consumerKey;
+        public static string consumerSecret;
+        public static string accessToken;
+        public static string accessTokenSecret;
 
 		public Config() {
 
@@ -16,17 +18,23 @@ namespace yakinikubot {
 		
         public void Load() {
         	var path = System.Environment.CurrentDirectory;
-        	path += filePath;
-        	Console.WriteLine(path);
-
-        	using(var reader = new StreamReader(path)) {
+        	
+            var slack = path + "/slack.config";
+        	using(var reader = new StreamReader(slack)) {
         		taoHouseURL = reader.ReadLine();
         		chigiHouseURL = reader.ReadLine();
-                clientId = reader.ReadLine();
-                clientSecret = reader.ReadLine();
         		Console.WriteLine(taoHouseURL);
         		Console.WriteLine(chigiHouseURL);
         	}
+
+
+            var twitter = path + "/twitter.config";
+            using(var reader = new StreamReader(twitter)) {
+                consumerKey = reader.ReadLine();
+                consumerSecret = reader.ReadLine();
+                accessToken = reader.ReadLine();
+                accessTokenSecret = reader.ReadLine();
+            }
         }
     }
 }
