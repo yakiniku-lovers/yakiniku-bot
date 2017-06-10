@@ -1,1 +1,3 @@
 yakiniku-bot
+
+実行ファイルと同じ場所にconfigというファイルを作り，taoHouseURL,chigiHouseURL,clientId,clientSecretを記述する．
