@@ -4,19 +4,21 @@ using CoreTweet.Streaming;
 //using CoreTweet.Streaming.Reactive;
 
 namespace yakinikubot {
-    public class YakinikuEventArgs : EventArgs {
+    public class TweetEventArgs : EventArgs {
         public string ScreenName;
+        public string Tweet;
 
-        public YakinikuEventArgs(string screenName) {
+        public TweetEventArgs(string screenName, string tweet) {
             this.ScreenName = screenName;
+            this.Tweet = tweet;
         }
     }
 
     public class TwitterController {
     	
 
-        public delegate void YakinikuEventHandler(object sender, YakinikuEventArgs e);
-        public event YakinikuEventHandler OnYakinikuReceived;
+        public delegate void TweetEventHandler(object sender, TweetEventArgs e);
+        public event TweetEventHandler OnTweetReceived;
 
         public TwitterController() {
 
@@ -34,10 +36,9 @@ namespace yakinikubot {
     			if(message is StatusMessage) {
         			var status = (message as StatusMessage).Status;
         			// Console.WriteLine(string.Format("{0}:{1}", status.User.ScreenName, status.Text));
-        			if(status.Text.Contains("焼肉")) {
-                        if(OnYakinikuReceived != null) 
-                            OnYakinikuReceived(this, new YakinikuEventArgs(status.User.ScreenName));
-        			}
+                    if(OnTweetReceived != null) 
+                        OnTweetReceived(this, new TweetEventArgs(status.User.ScreenName, status.Text));
+        			
     			} else if(message is EventMessage) {
         			var ev = message as EventMessage;
         			// Console.WriteLine(string.Format("{0}:{1}->{2}", ev.Event, ev.Source.ScreenName, ev.Target.ScreenName));
