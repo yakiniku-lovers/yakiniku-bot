@@ -17,19 +17,22 @@ namespace yakinikubot
             Console.WriteLine("Load image file");
             var image = new ImageList();
             image.Load();
-            var path = image.GetRandomFilePath();
 
             Console.WriteLine("Connect twitter");
             var twitter = new TwitterController();
             var slack = new SlackController(true);
+
             twitter.OnTweetReceived += (obj, e) => {
                 if(e.Tweet.Contains("焼肉")) {
                     var text = e.ScreenName + "さんが「" + e.Tweet + "」と呟きました";
                     Console.WriteLine(text);
                     slack.Upload(text);
-                    slack.Upload(path);
+
+                    var imagePath = image.GetRandomFilePath();
+                    slack.Upload(imagePath);
                 }
             };
+
             twitter.Connect();
         }
     }
